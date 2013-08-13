@@ -55,9 +55,9 @@ class Main
 					if (Xbox360Input.checkButton(i, Xbox360Input.LEFT_THUMB)) Sys.println("Player " + Std.string(i+1) + ": " + "LEFT_THUMB pressed.");
 					
 					if (Math.abs(Xbox360Input.rightThumbX(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_THUMB_X: " + Xbox360Input.rightThumbX(i));
-					if (Math.abs(Xbox360Input.rightThumbY(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_THUMB_X: " + Xbox360Input.rightThumbY(i));
-					if (Math.abs(Xbox360Input.leftThumbX(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_THUMB_X: " + Xbox360Input.leftThumbX(i));
-					if (Math.abs(Xbox360Input.leftThumbY(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_THUMB_X: " + Xbox360Input.leftThumbY(i));
+					if (Math.abs(Xbox360Input.rightThumbY(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_THUMB_Y: " + Xbox360Input.rightThumbY(i));
+					if (Math.abs(Xbox360Input.leftThumbX(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "LEFT_THUMB_X: " + Xbox360Input.leftThumbX(i));
+					if (Math.abs(Xbox360Input.leftThumbY(i)) >= stickThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "LEFT_THUMB_Y: " + Xbox360Input.leftThumbY(i));
 					
 					if (Xbox360Input.rightTrigger(i) >= triggerThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_TRIGGER: " + Xbox360Input.rightTrigger(i));
 					if (Xbox360Input.leftTrigger(i) >= triggerThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "LEFT_TRIGGER: " + Xbox360Input.leftTrigger(i));
