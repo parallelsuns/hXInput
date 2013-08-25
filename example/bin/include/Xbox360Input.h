@@ -52,6 +52,7 @@ class Xbox360Input_obj : public hx::Object{
 		static int B; /* REM */ 
 		static int X; /* REM */ 
 		static int Y; /* REM */ 
+		static bool enabled; /* REM */ 
 		static int setRumble( hx::Null< int >  index,hx::Null< int >  left,hx::Null< int >  right);
 		static Dynamic setRumble_dyn();
 
@@ -81,6 +82,9 @@ class Xbox360Input_obj : public hx::Object{
 
 		static bool getCtrlState( int index);
 		static Dynamic getCtrlState_dyn();
+
+		static bool poll( hx::Null< int >  start,hx::Null< int >  end);
+		static Dynamic poll_dyn();
 
 };
 

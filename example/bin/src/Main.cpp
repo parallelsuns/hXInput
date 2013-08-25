@@ -41,141 +41,159 @@ int Main_obj::stickThreshold;
 
 int Main_obj::triggerThreshold;
 
+bool Main_obj::detected;
+
 Void Main_obj::main( ){
 {
-		HX_STACK_PUSH("Main::main","Main.hx",24);
-		HX_STACK_LINE(25)
-		::Sys_obj::println(HX_CSTRING("hXInput Controller Test"));
-		HX_STACK_LINE(26)
-		::Sys_obj::println(HX_CSTRING(""));
+		HX_STACK_PUSH("Main::main","Main.hx",26);
 		HX_STACK_LINE(27)
-		::Sys_obj::println(HX_CSTRING("Press a button, pull a trigger, move a stick to read its value."));
+		::Sys_obj::println(HX_CSTRING("hXInput Controller Test"));
 		HX_STACK_LINE(28)
-		::Sys_obj::println(HX_CSTRING("Pulling a trigger activates the corresponding rumble motor."));
+		::Sys_obj::println(HX_CSTRING(""));
 		HX_STACK_LINE(29)
-		::Sys_obj::println(HX_CSTRING(""));
+		::Sys_obj::println(HX_CSTRING("Press a button, pull a trigger, move a stick to read its value."));
 		HX_STACK_LINE(30)
-		::Sys_obj::println(HX_CSTRING("Note: Right motor vibrates at a higher freq than the left motor."));
+		::Sys_obj::println(HX_CSTRING("Pulling a trigger activates the corresponding rumble motor."));
 		HX_STACK_LINE(31)
-		::Sys_obj::println(HX_CSTRING("You can only control rumble intensity, not frequency."));
-		HX_STACK_LINE(32)
 		::Sys_obj::println(HX_CSTRING(""));
+		HX_STACK_LINE(32)
+		::Sys_obj::println(HX_CSTRING("Note: Right motor vibrates at a higher freq than the left motor."));
 		HX_STACK_LINE(33)
+		::Sys_obj::println(HX_CSTRING("You can only control rumble intensity, not frequency."));
+		HX_STACK_LINE(34)
 		::Sys_obj::println(HX_CSTRING(""));
 		HX_STACK_LINE(35)
+		::Sys_obj::println(HX_CSTRING(""));
+		HX_STACK_LINE(37)
 		while((true)){
-			HX_STACK_LINE(37)
+			HX_STACK_LINE(39)
 			::IntIter intI = ::IntIter_obj::__new((int)0,(int)4);		HX_STACK_VAR(intI,"intI");
-			HX_STACK_LINE(38)
+			HX_STACK_LINE(40)
+			if (((bool((::Xbox360Input_obj::poll(null(),null()) == true)) && bool((::Main_obj::detected == false))))){
+				HX_STACK_LINE(42)
+				::Sys_obj::println(HX_CSTRING("Controller/s detected."));
+				HX_STACK_LINE(43)
+				::Main_obj::detected = true;
+			}
+			else{
+				HX_STACK_LINE(45)
+				if (((bool((::Main_obj::detected == true)) && bool((::Xbox360Input_obj::poll(null(),null()) == false))))){
+					HX_STACK_LINE(47)
+					::Sys_obj::println(HX_CSTRING("No Controller detected"));
+					HX_STACK_LINE(48)
+					::Main_obj::detected = false;
+				}
+			}
+			HX_STACK_LINE(50)
 			for(::cpp::FastIterator_obj< int > *__it = ::cpp::CreateFastIterator< int >(intI);  __it->hasNext(); ){
 				int i = __it->next();
 				if (((::Xbox360Input_obj::getCtrlState(i) == true))){
-					HX_STACK_LINE(42)
+					HX_STACK_LINE(53)
 					if ((::Xbox360Input_obj::checkButton(i,(int)4096))){
-						HX_STACK_LINE(42)
+						HX_STACK_LINE(53)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string(::Std_obj::string((i + (int)1)))) + HX_CSTRING(": ")) + HX_CSTRING("A pressed.")));
 					}
-					HX_STACK_LINE(43)
+					HX_STACK_LINE(54)
 					if ((::Xbox360Input_obj::checkButton(i,(int)8192))){
-						HX_STACK_LINE(43)
+						HX_STACK_LINE(54)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("B pressed.")));
 					}
-					HX_STACK_LINE(44)
+					HX_STACK_LINE(55)
 					if ((::Xbox360Input_obj::checkButton(i,(int)16384))){
-						HX_STACK_LINE(44)
+						HX_STACK_LINE(55)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("X pressed.")));
 					}
-					HX_STACK_LINE(45)
+					HX_STACK_LINE(56)
 					if ((::Xbox360Input_obj::checkButton(i,(int)32768))){
-						HX_STACK_LINE(45)
+						HX_STACK_LINE(56)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("Y pressed.")));
 					}
-					HX_STACK_LINE(46)
+					HX_STACK_LINE(57)
 					if ((::Xbox360Input_obj::checkButton(i,(int)1))){
-						HX_STACK_LINE(46)
+						HX_STACK_LINE(57)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("DPAD_UP pressed.")));
 					}
-					HX_STACK_LINE(47)
+					HX_STACK_LINE(58)
 					if ((::Xbox360Input_obj::checkButton(i,(int)2))){
-						HX_STACK_LINE(47)
+						HX_STACK_LINE(58)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("DPAD_DOWN pressed.")));
 					}
-					HX_STACK_LINE(48)
+					HX_STACK_LINE(59)
 					if ((::Xbox360Input_obj::checkButton(i,(int)4))){
-						HX_STACK_LINE(48)
+						HX_STACK_LINE(59)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("DPAD_LEFT pressed.")));
 					}
-					HX_STACK_LINE(49)
+					HX_STACK_LINE(60)
 					if ((::Xbox360Input_obj::checkButton(i,(int)8))){
-						HX_STACK_LINE(49)
+						HX_STACK_LINE(60)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("DPAD_RIGHT pressed.")));
 					}
-					HX_STACK_LINE(50)
+					HX_STACK_LINE(61)
 					if ((::Xbox360Input_obj::checkButton(i,(int)32))){
-						HX_STACK_LINE(50)
+						HX_STACK_LINE(61)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("BACK pressed.")));
 					}
-					HX_STACK_LINE(51)
+					HX_STACK_LINE(62)
 					if ((::Xbox360Input_obj::checkButton(i,(int)16))){
-						HX_STACK_LINE(51)
+						HX_STACK_LINE(62)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("START pressed.")));
 					}
-					HX_STACK_LINE(52)
+					HX_STACK_LINE(63)
 					if ((::Xbox360Input_obj::checkButton(i,(int)512))){
-						HX_STACK_LINE(52)
+						HX_STACK_LINE(63)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("RIGHT_SHOULDER pressed.")));
 					}
-					HX_STACK_LINE(53)
+					HX_STACK_LINE(64)
 					if ((::Xbox360Input_obj::checkButton(i,(int)256))){
-						HX_STACK_LINE(53)
+						HX_STACK_LINE(64)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("LEFT_SHOULDER pressed.")));
 					}
-					HX_STACK_LINE(54)
+					HX_STACK_LINE(65)
 					if ((::Xbox360Input_obj::checkButton(i,(int)128))){
-						HX_STACK_LINE(54)
+						HX_STACK_LINE(65)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("RIGHT_THUMB pressed.")));
 					}
-					HX_STACK_LINE(55)
+					HX_STACK_LINE(66)
 					if ((::Xbox360Input_obj::checkButton(i,(int)64))){
-						HX_STACK_LINE(55)
+						HX_STACK_LINE(66)
 						::Sys_obj::println((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("LEFT_THUMB pressed.")));
 					}
-					HX_STACK_LINE(57)
+					HX_STACK_LINE(68)
 					if (((::Math_obj::abs(::Xbox360Input_obj::rightThumbX(i)) >= (int)8500))){
-						HX_STACK_LINE(57)
+						HX_STACK_LINE(68)
 						::Sys_obj::println(((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("RIGHT_THUMB_X: ")) + ::Xbox360Input_obj::rightThumbX(i)));
 					}
-					HX_STACK_LINE(58)
+					HX_STACK_LINE(69)
 					if (((::Math_obj::abs(::Xbox360Input_obj::rightThumbY(i)) >= (int)8500))){
-						HX_STACK_LINE(58)
+						HX_STACK_LINE(69)
 						::Sys_obj::println(((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("RIGHT_THUMB_Y: ")) + ::Xbox360Input_obj::rightThumbY(i)));
 					}
-					HX_STACK_LINE(59)
+					HX_STACK_LINE(70)
 					if (((::Math_obj::abs(::Xbox360Input_obj::leftThumbX(i)) >= (int)8500))){
-						HX_STACK_LINE(59)
+						HX_STACK_LINE(70)
 						::Sys_obj::println(((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("LEFT_THUMB_X: ")) + ::Xbox360Input_obj::leftThumbX(i)));
 					}
-					HX_STACK_LINE(60)
+					HX_STACK_LINE(71)
 					if (((::Math_obj::abs(::Xbox360Input_obj::leftThumbY(i)) >= (int)8500))){
-						HX_STACK_LINE(60)
+						HX_STACK_LINE(71)
 						::Sys_obj::println(((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("LEFT_THUMB_Y: ")) + ::Xbox360Input_obj::leftThumbY(i)));
 					}
-					HX_STACK_LINE(62)
+					HX_STACK_LINE(73)
 					if (((::Xbox360Input_obj::rightTrigger(i) >= (int)50))){
-						HX_STACK_LINE(62)
+						HX_STACK_LINE(73)
 						::Sys_obj::println(((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("RIGHT_TRIGGER: ")) + ::Xbox360Input_obj::rightTrigger(i)));
 					}
-					HX_STACK_LINE(63)
+					HX_STACK_LINE(74)
 					if (((::Xbox360Input_obj::leftTrigger(i) >= (int)50))){
-						HX_STACK_LINE(63)
+						HX_STACK_LINE(74)
 						::Sys_obj::println(((((HX_CSTRING("Player ") + ::Std_obj::string((i + (int)1))) + HX_CSTRING(": ")) + HX_CSTRING("LEFT_TRIGGER: ")) + ::Xbox360Input_obj::leftTrigger(i)));
 					}
-					HX_STACK_LINE(64)
+					HX_STACK_LINE(75)
 					::Xbox360Input_obj::setRumble(i,(::Xbox360Input_obj::leftTrigger(i) * (int)256),(::Xbox360Input_obj::rightTrigger(i) * (int)256));
 				}
 ;
 			}
-			HX_STACK_LINE(67)
+			HX_STACK_LINE(78)
 			::Sys_obj::sleep(0.1);
 		}
 	}
@@ -206,6 +224,9 @@ Dynamic Main_obj::__Field(const ::String &inName,bool inCallProp)
 	case 4:
 		if (HX_FIELD_EQ(inName,"main") ) { return main_dyn(); }
 		break;
+	case 8:
+		if (HX_FIELD_EQ(inName,"detected") ) { return detected; }
+		break;
 	case 14:
 		if (HX_FIELD_EQ(inName,"stickThreshold") ) { return stickThreshold; }
 		break;
@@ -218,6 +239,9 @@ Dynamic Main_obj::__Field(const ::String &inName,bool inCallProp)
 Dynamic Main_obj::__SetField(const ::String &inName,const Dynamic &inValue,bool inCallProp)
 {
 	switch(inName.length) {
+	case 8:
+		if (HX_FIELD_EQ(inName,"detected") ) { detected=inValue.Cast< bool >(); return inValue; }
+		break;
 	case 14:
 		if (HX_FIELD_EQ(inName,"stickThreshold") ) { stickThreshold=inValue.Cast< int >(); return inValue; }
 		break;
@@ -235,6 +259,7 @@ void Main_obj::__GetFields(Array< ::String> &outFields)
 static ::String sStaticFields[] = {
 	HX_CSTRING("stickThreshold"),
 	HX_CSTRING("triggerThreshold"),
+	HX_CSTRING("detected"),
 	HX_CSTRING("main"),
 	String(null()) };
 
@@ -245,12 +270,14 @@ static void sMarkStatics(HX_MARK_PARAMS) {
 	HX_MARK_MEMBER_NAME(Main_obj::__mClass,"__mClass");
 	HX_MARK_MEMBER_NAME(Main_obj::stickThreshold,"stickThreshold");
 	HX_MARK_MEMBER_NAME(Main_obj::triggerThreshold,"triggerThreshold");
+	HX_MARK_MEMBER_NAME(Main_obj::detected,"detected");
 };
 
 static void sVisitStatics(HX_VISIT_PARAMS) {
 	HX_VISIT_MEMBER_NAME(Main_obj::__mClass,"__mClass");
 	HX_VISIT_MEMBER_NAME(Main_obj::stickThreshold,"stickThreshold");
 	HX_VISIT_MEMBER_NAME(Main_obj::triggerThreshold,"triggerThreshold");
+	HX_VISIT_MEMBER_NAME(Main_obj::detected,"detected");
 };
 
 Class Main_obj::__mClass;
@@ -266,5 +293,6 @@ void Main_obj::__boot()
 {
 	stickThreshold= (int)8500;
 	triggerThreshold= (int)50;
+	detected= false;
 }
 

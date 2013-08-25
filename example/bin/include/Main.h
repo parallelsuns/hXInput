@@ -30,6 +30,7 @@ class Main_obj : public hx::Object{
 
 		static int stickThreshold; /* REM */ 
 		static int triggerThreshold; /* REM */ 
+		static bool detected; /* REM */ 
 		static Void main( );
 		static Dynamic main_dyn();
 

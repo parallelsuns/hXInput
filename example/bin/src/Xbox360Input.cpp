@@ -1,5 +1,8 @@
 #include <hxcpp.h>
 
+#ifndef INCLUDED_IntIter
+#include <IntIter.h>
+#endif
 #ifndef INCLUDED_Xbox360Input
 #include <Xbox360Input.h>
 #endif
@@ -73,16 +76,23 @@ int Xbox360Input_obj::X;
 
 int Xbox360Input_obj::Y;
 
+bool Xbox360Input_obj::enabled;
+
 int Xbox360Input_obj::setRumble( hx::Null< int >  __o_index,hx::Null< int >  __o_left,hx::Null< int >  __o_right){
 int index = __o_index.Default(0);
 int left = __o_left.Default(0);
 int right = __o_right.Default(0);
-	HX_STACK_PUSH("Xbox360Input::setRumble","Xbox360Input.hx",45);
+	HX_STACK_PUSH("Xbox360Input::setRumble","Xbox360Input.hx",47);
 	HX_STACK_ARG(index,"index");
 	HX_STACK_ARG(left,"left");
 	HX_STACK_ARG(right,"right");
 {
-		HX_STACK_LINE(45)
+		HX_STACK_LINE(48)
+		if (((::Xbox360Input_obj::enabled == false))){
+			HX_STACK_LINE(48)
+			return (int)0;
+		}
+		HX_STACK_LINE(49)
 		return ::Xbox360Input_obj::dll_setRumble(index,left,right);
 	}
 }
@@ -91,9 +101,14 @@ int right = __o_right.Default(0);
 STATIC_HX_DEFINE_DYNAMIC_FUNC3(Xbox360Input_obj,setRumble,return )
 
 int Xbox360Input_obj::leftTrigger( int index){
-	HX_STACK_PUSH("Xbox360Input::leftTrigger","Xbox360Input.hx",55);
+	HX_STACK_PUSH("Xbox360Input::leftTrigger","Xbox360Input.hx",58);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(55)
+	HX_STACK_LINE(59)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(59)
+		return (int)0;
+	}
+	HX_STACK_LINE(60)
 	return ::Xbox360Input_obj::dll_leftTrigger(index);
 }
 
@@ -101,9 +116,14 @@ int Xbox360Input_obj::leftTrigger( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,leftTrigger,return )
 
 int Xbox360Input_obj::rightTrigger( int index){
-	HX_STACK_PUSH("Xbox360Input::rightTrigger","Xbox360Input.hx",65);
+	HX_STACK_PUSH("Xbox360Input::rightTrigger","Xbox360Input.hx",69);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(65)
+	HX_STACK_LINE(70)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(70)
+		return (int)0;
+	}
+	HX_STACK_LINE(71)
 	return ::Xbox360Input_obj::dll_rightTrigger(index);
 }
 
@@ -111,9 +131,14 @@ int Xbox360Input_obj::rightTrigger( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,rightTrigger,return )
 
 int Xbox360Input_obj::leftThumbX( int index){
-	HX_STACK_PUSH("Xbox360Input::leftThumbX","Xbox360Input.hx",75);
+	HX_STACK_PUSH("Xbox360Input::leftThumbX","Xbox360Input.hx",80);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(75)
+	HX_STACK_LINE(81)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(81)
+		return (int)0;
+	}
+	HX_STACK_LINE(82)
 	return ::Xbox360Input_obj::dll_leftThumbX(index);
 }
 
@@ -121,9 +146,14 @@ int Xbox360Input_obj::leftThumbX( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,leftThumbX,return )
 
 int Xbox360Input_obj::rightThumbX( int index){
-	HX_STACK_PUSH("Xbox360Input::rightThumbX","Xbox360Input.hx",85);
+	HX_STACK_PUSH("Xbox360Input::rightThumbX","Xbox360Input.hx",91);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(85)
+	HX_STACK_LINE(92)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(92)
+		return (int)0;
+	}
+	HX_STACK_LINE(93)
 	return ::Xbox360Input_obj::dll_rightThumbX(index);
 }
 
@@ -131,9 +161,14 @@ int Xbox360Input_obj::rightThumbX( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,rightThumbX,return )
 
 int Xbox360Input_obj::leftThumbY( int index){
-	HX_STACK_PUSH("Xbox360Input::leftThumbY","Xbox360Input.hx",95);
+	HX_STACK_PUSH("Xbox360Input::leftThumbY","Xbox360Input.hx",102);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(95)
+	HX_STACK_LINE(103)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(103)
+		return (int)0;
+	}
+	HX_STACK_LINE(104)
 	return ::Xbox360Input_obj::dll_leftThumbY(index);
 }
 
@@ -141,9 +176,14 @@ int Xbox360Input_obj::leftThumbY( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,leftThumbY,return )
 
 int Xbox360Input_obj::rightThumbY( int index){
-	HX_STACK_PUSH("Xbox360Input::rightThumbY","Xbox360Input.hx",105);
+	HX_STACK_PUSH("Xbox360Input::rightThumbY","Xbox360Input.hx",113);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(105)
+	HX_STACK_LINE(114)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(114)
+		return (int)0;
+	}
+	HX_STACK_LINE(115)
 	return ::Xbox360Input_obj::dll_rightThumbY(index);
 }
 
@@ -151,9 +191,14 @@ int Xbox360Input_obj::rightThumbY( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,rightThumbY,return )
 
 int Xbox360Input_obj::getButtonState( int index){
-	HX_STACK_PUSH("Xbox360Input::getButtonState","Xbox360Input.hx",121);
+	HX_STACK_PUSH("Xbox360Input::getButtonState","Xbox360Input.hx",130);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(121)
+	HX_STACK_LINE(131)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(131)
+		return (int)0;
+	}
+	HX_STACK_LINE(132)
 	return ::Xbox360Input_obj::dll_getButtonState(index);
 }
 
@@ -161,19 +206,24 @@ int Xbox360Input_obj::getButtonState( int index){
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,getButtonState,return )
 
 bool Xbox360Input_obj::checkButton( int index,int button){
-	HX_STACK_PUSH("Xbox360Input::checkButton","Xbox360Input.hx",132);
+	HX_STACK_PUSH("Xbox360Input::checkButton","Xbox360Input.hx",142);
 	HX_STACK_ARG(index,"index");
 	HX_STACK_ARG(button,"button");
-	HX_STACK_LINE(132)
+	HX_STACK_LINE(143)
+	if (((::Xbox360Input_obj::enabled == false))){
+		HX_STACK_LINE(143)
+		return false;
+	}
+	HX_STACK_LINE(144)
 	if (((::Xbox360Input_obj::dll_checkButton(index,button) == (int)1))){
-		HX_STACK_LINE(133)
+		HX_STACK_LINE(144)
 		return true;
 	}
 	else{
-		HX_STACK_LINE(134)
+		HX_STACK_LINE(145)
 		return false;
 	}
-	HX_STACK_LINE(132)
+	HX_STACK_LINE(144)
 	return false;
 }
 
@@ -181,23 +231,60 @@ bool Xbox360Input_obj::checkButton( int index,int button){
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(Xbox360Input_obj,checkButton,return )
 
 bool Xbox360Input_obj::getCtrlState( int index){
-	HX_STACK_PUSH("Xbox360Input::getCtrlState","Xbox360Input.hx",143);
+	HX_STACK_PUSH("Xbox360Input::getCtrlState","Xbox360Input.hx",154);
 	HX_STACK_ARG(index,"index");
-	HX_STACK_LINE(143)
+	HX_STACK_LINE(154)
 	if (((::Xbox360Input_obj::dll_getCtrlState(index) == (int)1167))){
-		HX_STACK_LINE(144)
+		HX_STACK_LINE(155)
 		return false;
 	}
 	else{
-		HX_STACK_LINE(145)
+		HX_STACK_LINE(156)
 		return true;
 	}
-	HX_STACK_LINE(143)
+	HX_STACK_LINE(154)
 	return false;
 }
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(Xbox360Input_obj,getCtrlState,return )
+
+bool Xbox360Input_obj::poll( hx::Null< int >  __o_start,hx::Null< int >  __o_end){
+int start = __o_start.Default(0);
+int end = __o_end.Default(3);
+	HX_STACK_PUSH("Xbox360Input::poll","Xbox360Input.hx",166);
+	HX_STACK_ARG(start,"start");
+	HX_STACK_ARG(end,"end");
+{
+		HX_STACK_LINE(167)
+		::IntIter iter = ::IntIter_obj::__new(start,end);		HX_STACK_VAR(iter,"iter");
+		HX_STACK_LINE(168)
+		bool state = false;		HX_STACK_VAR(state,"state");
+		HX_STACK_LINE(169)
+		for(::cpp::FastIterator_obj< int > *__it = ::cpp::CreateFastIterator< int >(iter);  __it->hasNext(); ){
+			int i = __it->next();
+			if (((::Xbox360Input_obj::getCtrlState(i) == true))){
+				HX_STACK_LINE(171)
+				state = true;
+			}
+;
+		}
+		HX_STACK_LINE(174)
+		if (((state == true))){
+			HX_STACK_LINE(174)
+			::Xbox360Input_obj::enabled = true;
+		}
+		else{
+			HX_STACK_LINE(175)
+			::Xbox360Input_obj::enabled = false;
+		}
+		HX_STACK_LINE(177)
+		return ::Xbox360Input_obj::enabled;
+	}
+}
+
+
+STATIC_HX_DEFINE_DYNAMIC_FUNC2(Xbox360Input_obj,poll,return )
 
 
 Xbox360Input_obj::Xbox360Input_obj()
@@ -225,12 +312,14 @@ Dynamic Xbox360Input_obj::__Field(const ::String &inName,bool inCallProp)
 		break;
 	case 4:
 		if (HX_FIELD_EQ(inName,"BACK") ) { return BACK; }
+		if (HX_FIELD_EQ(inName,"poll") ) { return poll_dyn(); }
 		break;
 	case 5:
 		if (HX_FIELD_EQ(inName,"START") ) { return START; }
 		break;
 	case 7:
 		if (HX_FIELD_EQ(inName,"DPAD_UP") ) { return DPAD_UP; }
+		if (HX_FIELD_EQ(inName,"enabled") ) { return enabled; }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"DPAD_DOWN") ) { return DPAD_DOWN; }
@@ -297,6 +386,7 @@ Dynamic Xbox360Input_obj::__SetField(const ::String &inName,const Dynamic &inVal
 		break;
 	case 7:
 		if (HX_FIELD_EQ(inName,"DPAD_UP") ) { DPAD_UP=inValue.Cast< int >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"enabled") ) { enabled=inValue.Cast< bool >(); return inValue; }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"DPAD_DOWN") ) { DPAD_DOWN=inValue.Cast< int >(); return inValue; }
@@ -364,6 +454,7 @@ static ::String sStaticFields[] = {
 	HX_CSTRING("B"),
 	HX_CSTRING("X"),
 	HX_CSTRING("Y"),
+	HX_CSTRING("enabled"),
 	HX_CSTRING("setRumble"),
 	HX_CSTRING("leftTrigger"),
 	HX_CSTRING("rightTrigger"),
@@ -374,6 +465,7 @@ static ::String sStaticFields[] = {
 	HX_CSTRING("getButtonState"),
 	HX_CSTRING("checkButton"),
 	HX_CSTRING("getCtrlState"),
+	HX_CSTRING("poll"),
 	String(null()) };
 
 static ::String sMemberFields[] = {
@@ -405,6 +497,7 @@ static void sMarkStatics(HX_MARK_PARAMS) {
 	HX_MARK_MEMBER_NAME(Xbox360Input_obj::B,"B");
 	HX_MARK_MEMBER_NAME(Xbox360Input_obj::X,"X");
 	HX_MARK_MEMBER_NAME(Xbox360Input_obj::Y,"Y");
+	HX_MARK_MEMBER_NAME(Xbox360Input_obj::enabled,"enabled");
 };
 
 static void sVisitStatics(HX_VISIT_PARAMS) {
@@ -433,6 +526,7 @@ static void sVisitStatics(HX_VISIT_PARAMS) {
 	HX_VISIT_MEMBER_NAME(Xbox360Input_obj::B,"B");
 	HX_VISIT_MEMBER_NAME(Xbox360Input_obj::X,"X");
 	HX_VISIT_MEMBER_NAME(Xbox360Input_obj::Y,"Y");
+	HX_VISIT_MEMBER_NAME(Xbox360Input_obj::enabled,"enabled");
 };
 
 Class Xbox360Input_obj::__mClass;
@@ -470,5 +564,6 @@ void Xbox360Input_obj::__boot()
 	B= (int)8192;
 	X= (int)16384;
 	Y= (int)32768;
+	enabled= true;
 }
 

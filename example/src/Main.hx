@@ -20,6 +20,8 @@ class Main
 	 */
 	private static inline var triggerThreshold:Int = 50;
 	
+	private static var detected:Bool = false;
+	
 	static function main() 
 	{
 		Sys.println("hXInput Controller Test");
@@ -35,9 +37,18 @@ class Main
 		while (true)
 		{
 			var intI:IntIter = new IntIter(0, 4);
-			for (i in intI)
+			if (Xbox360Input.poll() == true && detected == false) 
 			{
-				if (Xbox360Input.getCtrlState(i) == true)
+				Sys.println("Controller/s detected.");
+				detected = true;
+			}
+			else if (detected == true && Xbox360Input.poll() == false) 
+			{
+				Sys.println("No Controller detected");
+				detected = false;
+			}
+			for (i in intI)
+			{	if (Xbox360Input.getCtrlState(i) == true)
 				{
 					if (Xbox360Input.checkButton(i, Xbox360Input.A)) Sys.println("Player " + Std.string(Std.string(i+1)) + ": " + "A pressed.");
 					if (Xbox360Input.checkButton(i, Xbox360Input.B)) Sys.println("Player " + Std.string(i+1) + ": " + "B pressed.");
@@ -61,7 +72,7 @@ class Main
 					
 					if (Xbox360Input.rightTrigger(i) >= triggerThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "RIGHT_TRIGGER: " + Xbox360Input.rightTrigger(i));
 					if (Xbox360Input.leftTrigger(i) >= triggerThreshold) Sys.println("Player " + Std.string(i+1) + ": " + "LEFT_TRIGGER: " + Xbox360Input.leftTrigger(i));
-					Xbox360Input.setRumble(i, Xbox360Input.leftTrigger(i)*256, Xbox360Input.rightTrigger(i)*256);
+					Xbox360Input.setRumble(i, Xbox360Input.leftTrigger(i) * 256, Xbox360Input.rightTrigger(i) * 256);
 				}
 			}
 			Sys.sleep(0.1);

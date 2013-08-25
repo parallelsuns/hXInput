@@ -55,6 +55,7 @@
    <depend name="include/haxe/io/Error.h"/>
   </file>
   <file name="src/Xbox360Input.cpp">
+   <depend name="include/IntIter.h"/>
    <depend name="include/Xbox360Input.h"/>
    <depend name="include/cpp/Lib.h"/>
   </file>
