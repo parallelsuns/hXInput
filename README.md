@@ -16,6 +16,11 @@ Basic Usage:
 Grab the hXInput.dll and drop it in your application directory. Refer to or use Xbox360Input.hx in the example
 application for a class with all the necessary functions to interface with XInput.
 
+Note: calling the dll functions when there is no controller connected can be unusually resource-intensive, 
+and may result in a noticeable framerate drop in your game. You should use poll the controller/s with
+getCtrlState() every few seconds to check if they are connected and disable the hXInput function calls when
+they are not connected.
+
 IF you need something which already includes higher-level features (i.e, button release checks, 
 stick deadzone checks,etc.), refer to: openfl-xinput (https://github.com/Sunjammer/openfl-xinput).
 That requires openfl though, while hXInput does not.
