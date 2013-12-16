@@ -35,5 +35,8 @@ and may result in a noticeable framerate drop in your game. You should poll the 
 getCtrlState() every few seconds to check if they are connected and disable the hXInput function calls when
 they are not connected.
 
+<h3>License:</h3>
+Public Domain. Refer to License file for details.
+
 If you're using openfl, an alternative is: openfl-xinput (https://github.com/Sunjammer/openfl-xinput).
 That requires openfl though, while hXInput does not.
