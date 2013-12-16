@@ -1,7 +1,7 @@
 hXInput
 =======
 
-hXInput is a Haxe library and DLL, based on GMXInput by yellowsix (http://gmc.yoyogames.com/index.php?showtopic=360286),
+hXInput is a Haxe library and DLL (the dll's api is based on GMXInput by yellowsix (http://gmc.yoyogames.com/index.php?showtopic=360286)),
 that acts as a wrapper for the XInput API (which is part of DirectX), allowing access to XInput within Haxe.
 
 This allows full native support for the Xbox 360 controller, with all buttons, sticks and triggers accessible on Windows.
