@@ -22,7 +22,7 @@ folder for a class with all the basic necessary functions to interface with XInp
 
 <h3>Usage with more complete haxe library</h3>
 For a more complete input library, use example2. To use the library in example2, call ControllerInput.initialize() at application start.
-Then ensure you call ControllerInput.update() every frame, prior to your entity update loop. the only class you have to interact with is ControllerInput. You may also have to import some of the enums in the hx files to provide as arguments for functions.
+Then ensure you call ControllerInput.update() every frame, prior to your entity update loop. the only class you have to interact with is ControllerInput. You may also have to import some of the enums in the hx files to provide as arguments for functions. For buttons, use the int constants in the Xbox360Gamepad class, in ControllerInput.hx.
 It has plenty of functions for receiving input and sending rumble data, and all functions are thoroughly documented.
 Everything else is handled behind the scenes.
 
