@@ -9,7 +9,6 @@ import hxinput.ControllerInput;
 class Axis
 {
 	public var state:ButtonState;
-	public var threshold:Int = 8000;
 	
 	public function new()
 	{
@@ -20,7 +19,6 @@ class Axis
 class Stick extends Button
 {
 	public var resolution:Int = 65536;
-	public var threshold:Int = 8000;
 	
 	private var horizontal:Axis;
 	private var vertical:Axis;
@@ -162,8 +160,8 @@ class Stick extends Button
 				else if (type == ControlType.right) value = XInput.rightThumbX(parent.index);
 			}
 			
-			if (value >= threshold) return StickDirection.right;
-			else if (value <= -threshold) return StickDirection.left;
+			if (value >= horizontal.threshold) return StickDirection.right;
+			else if (value <= -horizontal.threshold) return StickDirection.left;
 			else return StickDirection.none;
 		}
 		else if (axis == StickAxis.vertical)
@@ -174,8 +172,8 @@ class Stick extends Button
 				else if (type == ControlType.right) value = XInput.rightThumbY(parent.index);
 			}
 			
-			if (value >= threshold) return StickDirection.up;
-			else if (value <= -threshold) return StickDirection.down;
+			if (value >= vertical.threshold) return StickDirection.up;
+			else if (value <= -vertical.threshold) return StickDirection.down;
 			else return StickDirection.none;
 		}
 		else return StickDirection.none;
@@ -190,8 +188,8 @@ class Stick extends Button
 			else if (type == ControlType.right) horizontalValue = XInput.rightThumbX(parent.index);
 		}
 		
-		if (horizontalValue >= threshold) return StickDirection.right;
-		else if (horizontalValue <= -threshold) return StickDirection.left;
+		if (horizontalValue >= horizontal.threshold) return StickDirection.right;
+		else if (horizontalValue <= -horizontal.threshold) return StickDirection.left;
 		else return StickDirection.none;
 	}
 	
@@ -204,8 +202,8 @@ class Stick extends Button
 			else if (type == ControlType.right) verticalValue = XInput.rightThumbY(parent.index);
 		}
 		
-		if (verticalValue >= threshold) return StickDirection.up;
-		else if (verticalValue <= -threshold) return StickDirection.down;
+		if (verticalValue >= vertical.threshold) return StickDirection.up;
+		else if (verticalValue <= -vertical.threshold) return StickDirection.down;
 		else return StickDirection.none;
 	}
 	
